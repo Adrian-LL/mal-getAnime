@@ -15,6 +15,41 @@ scoredBy: number of member scored the anime
 members: number of member added anime to their list
 rank: TBD
 popularity: TBD
+
+TO BE UPDATED
+'title', 
+'title_english', 
+'title_japanese', 
+'title_synonyms',
+'image_url', 
+'type', 
+'source', 
+'episodes', 
+'status', 
+'airing',
+'aired_string', 
+'aired', 
+'duration', 
+'rating', 
+'score', 
+'scored_by',
+'rank', 
+'popularity', 
+'members', 
+'favorites', 
+'background', 
+'premiered',
+'broadcast', 
+'related', 
+'producer', 
+'licensor', 
+'studios', 
+'genres',
+'opening_theme', 
+'ending_theme', 
+'aired_from_year', 
+'genre'
+
 '''
 
 # importing libraries
@@ -108,7 +143,7 @@ for i in range(start, end): # note: The index starts in 1 and ends in 37115 (as 
 		l.append(jsonData['score']) # score
 		l.append(jsonData['scored_by']) # number of members scored
 		l.append(jsonData['members']) # number members added this anime in their list
-		# added by me
+		# added by me 2019/01/24
 		l.append(jsonData['rank'])
 		l.append(jsonData['popularity'])
 

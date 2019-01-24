@@ -45,13 +45,15 @@ else:
 w = open(outputFile, 'a', encoding='utf-8')
 
 # header
-w.write('animeID, name, premiered, genre, type, episodes, studios, source, scored, scoredBy, members, rank, popularity\n')
+# NOTE - this is the provisional 'append' file, does not write columns titles
+# w.write('animeID, name, premiered, genre, type, episodes, studios, source, scored, scoredBy, members, rank, popularity\n')
 
 # creating csv writer object
 writer = csv.writer(w)
 
 for i in range(start, end): # note: The index starts in 1 and ends in 37115 (as on Jan 15 2018)
-	# apiUrl = 'http://api.jikan.moe/anime/' + str(i) # base url for API
+	# apiUrl = 'http://api.jikan.moe/v3/anime/' + str(i) # base url for API
+	# valid as of 2019/01/24
 	apiUrl = 'https://api.jikan.moe/v3/anime/' + str(i)
 	# note: for SSL use 'https://api.jikan.me/'. For more go here 'https://jikan.me/docs'
 
