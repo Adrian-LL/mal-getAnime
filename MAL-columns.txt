@@ -1,0 +1,7 @@
+Index(['title', 'title_english', 'title_japanese', 'title_synonyms',
+       'image_url', 'type', 'source', 'episodes', 'status', 'airing',
+       'aired_string', 'aired', 'duration', 'rating', 'score', 'scored_by',
+       'rank', 'popularity', 'members', 'favorites', 'background', 'premiered',
+       'broadcast', 'related', 'producer', 'licensor', 'studios', 'genres',
+       'opening_theme', 'ending_theme', 'aired_from_year', 'genre'],
+      dtype='object')
