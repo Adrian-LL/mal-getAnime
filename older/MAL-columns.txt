@@ -1,0 +1,63 @@
+Index(['title', 'title_english', 'title_japanese', 'title_synonyms',
+       'image_url', 'type', 'source', 'episodes', 'status', 'airing',
+       'aired_string', 'aired', 'duration', 'rating', 'score', 'scored_by',
+       'rank', 'popularity', 'members', 'favorites', 'background', 'premiered',
+       'broadcast', 'related', 'producer', 'licensor', 'studios', 'genres',
+       'opening_theme', 'ending_theme', 'aired_from_year', 'genre'],
+      dtype='object')
+
+'title', 			- OK exist
+'title_english', 	- OK added
+'title_japanese', 	- OK added
+'title_synonyms',	- OK added
+'image_url', 		- NOK, not useful
+'type', 			- OK exist
+'source', 			- OK exist (reversed order with source)
+'episodes', 		- OK exist
+'status', 			- OK added
+'airing',			- OK added (dictionar, long)
+       'aired_string', - NOK, not extracted
+'aired', 			- OK added
+'duration', 		- OK added
+'rating', 			- OK added
+'score', 			- OK exist
+'scored_by',		- OK added
+'rank', 			- OK added
+'popularity', 		- OK added
+'members', 			- OK added			
+'favorites', 		- OK added
+'synopsis',			- OK added
+'background', 		- OK added
+'premiered',		- OK exist	
+'broadcast', 		- OK added	
+'related', 			- OK added (dictionary, long)
+	'producer',	- NOK 
+	'licensor', - NOK
+	'studios', 	- OK
+'genres',			- OK exist, different order
+'opening_theme', 
+'ending_theme', 
+	'aired_from_year', 
+	'genre' 		- NOK - does not exist
+	
+	
+w.write('animeID, name, title_english, title_japanese, title_synonyms, type, source, producers, genre, studio, episodes, status, airing, aired, duration, rating, score, scored_by, rank, popularity, members, favorites, synopsis, background, premiered, broadcast, related\n')
+
+
+
+
+
+
+Richardson Kilis, News Managing Editor at MyAnimeList
+
+Answered May 22 2017 · Author has 391 answers and 930.4k answer views
+
+Ranked tells the viewer the overall position of the entry sorted by how users score the work, 
+from highest to lowest. 
+The complete list is available in the Top Anime and Top Manga pages.
+
+Popularity tells the viewer the overall position of the entry sorted by 
+how many users have that work in their anime and manga lists. 
+The complete list is available in the Most Popular Anime and Most Popular Manga pages.
+
+Members gives a numerical count of how many users have that entry in their anime and manga lists.

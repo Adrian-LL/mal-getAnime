@@ -76,12 +76,12 @@ else:
 	outputFile = 'Anime.csv'
 
 # opening output file for writing
-# don't forget the encoding
-w = open(outputFile, 'a', encoding='utf-8')
+# don't forget the encoding for japanese and or other unicode caracters
+# please note the newline = '' - it is needed only for Windows (otherwise writer insert blank rows)
+w = open(outputFile, 'w', encoding='utf-8', newline = '')
 
 # header
-w.write('animeID, name, premiered, genre, type, episodes, studios, source, scored, scoredBy, members, rank, popularity\n')
-
+w.write('animeID, name, title_english, title_japanese, title_synonyms, type, source, producers, genres, studios, episodes, status, airing, aired, duration, rating, score, scored_by, ranked, popularity, members, favorites, synopsis, background, premiered, broadcast, related\n')
 # creating csv writer object
 writer = csv.writer(w)
 
@@ -123,6 +123,10 @@ for i in range(start, end): # note: The index starts in 1 and ends in 37115 (as 
 
 		studio = [] # list to store studio (list cause it can be more then 1)
 		genre = [] # list to store genre (list cuase it can be more then 1)
+		producers = []
+		licensors = []
+
+		# aired_string = [] # list to store aired properties (can be more than 1)
 
 		# getting studio name
 		for j in range(0, len(jsonData['studios'])):
@@ -132,21 +136,57 @@ for i in range(start, end): # note: The index starts in 1 and ends in 37115 (as 
 		for j in range(0, len(jsonData['genres'])):
 			genre.append(jsonData['genres'][j]['name'])
 
-		l.append(i) # anime ID
-		l.append(name) # anime title
-		l.append(jsonData['premiered']) # anime premiered on
-		l.append(genre) # anime genre
-		l.append(jsonData['type']) # anime type
-		l.append(jsonData['episodes']) # number of episodes
-		l.append(studio) # studio
-		l.append(jsonData['source']) # source of anime
-		l.append(jsonData['score']) # score
-		l.append(jsonData['scored_by']) # number of members scored
-		l.append(jsonData['members']) # number members added this anime in their list
-		# added by me 2019/01/24
-		l.append(jsonData['rank'])
-		l.append(jsonData['popularity'])
+		# getting producers
+		for j in range(0, len(jsonData['producers'])):
+			producers.append(jsonData['producers'][j]['name'])
 
+		# getting licensors
+		for j in range(0, len(jsonData['licensors'])):
+			licensors.append(jsonData['licensors'][j]['name'])
+
+		# added
+		# for j in range(0, len(jsonData['aired'])):
+		# 	aired_string.append(jsonData['aired'][j]['string'])	
+
+		l.append(i) # anime ID
+		l.append(name) # anime title - extracted from json above
+		# added 2019-01-25
+		l.append(jsonData['title_english'])
+		l.append(jsonData['title_japanese'])
+		l.append(jsonData['title_synonyms'])
+		l.append(jsonData['type']) # anime type
+		l.append(jsonData['source']) # source of anime
+		# extracted data
+		l.append(producers) # list of strings: producers, extracted above
+		l.append(genre) # list of strings: anime genre, extracted above
+		l.append(studio) # list of strings: studio, extracted above
+		# other data
+		l.append(jsonData['episodes']) # number of episodes
+		l.append(jsonData['status']) # aired or not etc. (added 2019-01-25)
+		l.append(jsonData['airing']) # True or False
+		l.append(jsonData['aired']) # dictionary with aired dates
+		l.append(jsonData['duration']) # per episode or the entire duration if movie
+		l.append(jsonData['rating']) # age rating
+		l.append(jsonData['score']) # score 0 to 10
+		l.append(jsonData['scored_by']) # number of users that scored
+		l.append(jsonData['rank']) # weighted according to some MAL formula
+		l.append(jsonData['popularity']) # based on how many members/users have the repective anime in their list
+		l.append(jsonData['members']) # number members added this anime in their list
+		l.append(jsonData['favorites']) # TBD number members that favitest these in their list
+		l.append(jsonData['synopsis']) # long string with anime synopsis
+		l.append(jsonData['background']) # long string with production background and other things
+		l.append(jsonData['premiered']) # anime premiered on
+		l.append(jsonData['broadcast']) # when is (regularly) broadcasted
+		l.append(jsonData['related']) # dictionaruy: related animes, series, games etc.
+		
+		
+
+		
+		
+		
+		
+		
+		# preparing to write csv
 		l = [l] # help in writing using csv.writer.writerows
 
 		print('Writing anime', name)
