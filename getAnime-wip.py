@@ -81,8 +81,7 @@ else:
 w = open(outputFile, 'a', encoding='utf-8', newline = '')
 
 # header
-w.write('animeID, name, title_english, title_japanese, title_synonyms, premiered, genre, type, episodes, studios, source, scored, scoredBy, members, rank, popularity, aired_prop\n')
-
+w.write('animeID, name, title_english, title_japanese, title_synonyms, type, source, producers, genres, studios, episodes, status, airing, aired, duration, rating, score, scored_by, ranked, popularity, members, favorites, synopsis, background, premiered, broadcast, related\n')
 # creating csv writer object
 writer = csv.writer(w)
 
@@ -151,41 +150,37 @@ for i in range(start, end): # note: The index starts in 1 and ends in 37115 (as 
 
 		l.append(i) # anime ID
 		l.append(name) # anime title - extracted from json above
-
 		# added 2019-01-25
 		l.append(jsonData['title_english'])
 		l.append(jsonData['title_japanese'])
 		l.append(jsonData['title_synonyms'])
-
-		# new order
 		l.append(jsonData['type']) # anime type
 		l.append(jsonData['source']) # source of anime
+		# extracted data
+		l.append(producers) # list of strings: producers, extracted above
+		l.append(genre) # list of strings: anime genre, extracted above
+		l.append(studio) # list of strings: studio, extracted above
+		# other data
 		l.append(jsonData['episodes']) # number of episodes
 		l.append(jsonData['status']) # aired or not etc. (added 2019-01-25)
 		l.append(jsonData['airing']) # True or False
 		l.append(jsonData['aired']) # dictionary with aired dates
-		l.append(jsonData['duration']) # number of episodes (see type above)
+		l.append(jsonData['duration']) # per episode or the entire duration if movie
 		l.append(jsonData['rating']) # age rating
 		l.append(jsonData['score']) # score 0 to 10
-		l.append(jsonData['scored_by']) # numver of users that scored
-		l.append(jsonData['rank']) # according to coma MAl formula
-		l.append(jsonData['popularity']) # how many users have the anime in their list
+		l.append(jsonData['scored_by']) # number of users that scored
+		l.append(jsonData['rank']) # weighted according to some MAL formula
+		l.append(jsonData['popularity']) # based on how many members/users have the repective anime in their list
 		l.append(jsonData['members']) # number members added this anime in their list
 		l.append(jsonData['favorites']) # TBD number members that favitest these in their list
 		l.append(jsonData['synopsis']) # long string with anime synopsis
 		l.append(jsonData['background']) # long string with production background and other things
 		l.append(jsonData['premiered']) # anime premiered on
 		l.append(jsonData['broadcast']) # when is (regularly) broadcasted
-		l.append(jsonData['related']) # related animes, series, games etc.
+		l.append(jsonData['related']) # dictionaruy: related animes, series, games etc.
 		
 		
 
-		# original entries
-		l.append(producers) # producers, extracted above
-		
-		l.append(genre) # anime genre, extracted above
-		
-		l.append(studio) # studio, extracted above
 		
 		
 		

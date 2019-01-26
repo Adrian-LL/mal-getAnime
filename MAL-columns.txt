@@ -39,3 +39,25 @@ Index(['title', 'title_english', 'title_japanese', 'title_synonyms',
 'ending_theme', 
 	'aired_from_year', 
 	'genre' 		- NOK - does not exist
+	
+	
+w.write('animeID, name, title_english, title_japanese, title_synonyms, type, source, producers, genre, studio, episodes, status, airing, aired, duration, rating, score, scored_by, rank, popularity, members, favorites, synopsis, background, premiered, broadcast, related\n')
+
+
+
+
+
+
+Richardson Kilis, News Managing Editor at MyAnimeList
+
+Answered May 22 2017 · Author has 391 answers and 930.4k answer views
+
+Ranked tells the viewer the overall position of the entry sorted by how users score the work, 
+from highest to lowest. 
+The complete list is available in the Top Anime and Top Manga pages.
+
+Popularity tells the viewer the overall position of the entry sorted by 
+how many users have that work in their anime and manga lists. 
+The complete list is available in the Most Popular Anime and Most Popular Manga pages.
+
+Members gives a numerical count of how many users have that entry in their anime and manga lists.
