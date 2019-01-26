@@ -5,3 +5,37 @@ Index(['title', 'title_english', 'title_japanese', 'title_synonyms',
        'broadcast', 'related', 'producer', 'licensor', 'studios', 'genres',
        'opening_theme', 'ending_theme', 'aired_from_year', 'genre'],
       dtype='object')
+
+'title', 			- OK exist
+'title_english', 	- OK added
+'title_japanese', 	- OK added
+'title_synonyms',	- OK added
+'image_url', 		- NOK, not useful
+'type', 			- OK exist
+'source', 			- OK exist (reversed order with source)
+'episodes', 		- OK exist
+'status', 			- OK added
+'airing',			- OK added (dictionar, long)
+       'aired_string', - NOK, not extracted
+'aired', 			- OK added
+'duration', 		- OK added
+'rating', 			- OK added
+'score', 			- OK exist
+'scored_by',		- OK added
+'rank', 			- OK added
+'popularity', 		- OK added
+'members', 			- OK added			
+'favorites', 		- OK added
+'synopsis',			- OK added
+'background', 		- OK added
+'premiered',		- OK exist	
+'broadcast', 		- OK added	
+'related', 			- OK added (dictionary, long)
+	'producer',	- NOK 
+	'licensor', - NOK
+	'studios', 	- OK
+'genres',			- OK exist, different order
+'opening_theme', 
+'ending_theme', 
+	'aired_from_year', 
+	'genre' 		- NOK - does not exist

@@ -30,9 +30,7 @@
                 'year': 1999
             }
         }, 
-            'string': 'Apr 3,
-        1998 to Apr 24,
-        1999'
+		'string': 'Apr 3, 1998 to Apr 24, 1999'
     }, 
     'duration': '24 min per ep', 
     'rating': 'R - 17+ (violence & profanity)', 
