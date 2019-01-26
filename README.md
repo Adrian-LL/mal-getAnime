@@ -1,8 +1,26 @@
 # mal-getAnime
-Pyhton script for getting anime from MyAnimeList / forked from Dibakarroy1997/myanimelist-data-set-creator
+Pyhton script for getting anime from MyAnimeList.
+
+Forked from Dibakarroy1997/myanimelist-data-set-creator
+
 ## Two files
-1. `getAnime.py` - for getting the first x rows. Creates the output file and writes the headers.
-2. `getAnime-append.py` - for appending the next rows to an already existing `.csv`, without headers
+1. `getAnime.py` - for getting the first x rows. Creates the output file and writes the headers. The file is opened in `'w'` (write) mode. 
+> An existing file is overwritten.
+
+Usage:
+```bash
+$ python getAnime.py index_start index_stop <file_name> # (default Anime.csv>)
+```
+
+
+2. `getAnime-append.py` - for appending the next rows to an already existing `.csv`, without headers. The file is opened in `'a'` (append) mode. Default `Anime.csv`. An existing file is NOT overwritten.
+
+
+Usage:
+```bash
+$ python getAnime-append.py index_start index_stop <file_name> # (default Anime.csv>)
+```
+> NOTE - the output is encoded in `utf-8`.
 
 # Done
 * Modified the link to `jikan` API.
@@ -10,7 +28,38 @@ Pyhton script for getting anime from MyAnimeList / forked from Dibakarroy1997/my
 * Added utf-8 encoding to output file
 * corrected `jsonData` variable whose definition was missing
 
-# TO DO
-* update `getAnime-append.py`
-* to append to file instead of write (open('w')). To fiddle to check if the file exists etc.
-* to get more fields from the MAL page (e.g japanese name etc. - only if useful)
+# Fields (Columns) of Dataset
+
+See code.
+ 
+```python
+                'animeID' # anime ID
+		 'name' # anime title - extracted from json above
+		 'title_english' # title in English
+		 'title_japanese' # title in Japanese
+		 'title_synonyms' # other variants of title
+		 'type' # anime type
+		 'source' # source of anime
+		# extracted data
+		'producers' # list of strings: producers, extracted above
+		'genre' # list of strings: anime genre, extracted above
+		'studios' # list of strings: studio, extracted above
+		# other data
+		 'episodes' # number of episodes
+		 'status' # aired or not etc. (added 2019-01-25)
+		 'airing' # True or False
+		 'aired' # dictionary with aired dates
+		 'duration' # per episode or the entire duration if movie
+		 'rating' # age rating
+		 'score' # score 0 to 10
+		 'scored_by' # number of users that scored
+		 'rank' # weighted according to some MAL formula
+		 'popularity' # based on how many members/users have the repective anime in their list
+		 'members' # number members added this anime in their list
+		 'favorites' # TBD number members that favitest these in their list
+		 'synopsis' # long string with anime synopsis
+		 'background' # long string with production background and other things
+		 'premiered' # anime premiered on
+		 'broadcast' # when is (regularly) broadcasted
+		 'related' # dictionary: related animes, series, games etc.
+```
