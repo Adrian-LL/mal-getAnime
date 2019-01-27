@@ -57,6 +57,7 @@ import requests
 import json
 import csv
 import sys
+import time
 
 count = 0 # keep count of anime	for current session
 
@@ -92,9 +93,24 @@ for i in range(start, end): # note: The index starts in 1 and ends in 37115 (as 
 	apiUrl = 'https://api.jikan.moe/v3/anime/' + str(i)
 	# note: for SSL use 'https://api.jikan.me/'. For more go here 'https://jikan.me/docs'
 
-	# API call
+	# wait 5 seconds for avoiding API throttling problems
+	# to try & error to see if sleep can be put below, only when "too many requests" error occurs
+	time.sleep(5)
+	
+	# First API call
 	page = requests.get(apiUrl)
 	c = page.content
+	
+	print('1. Index =', i)
+	print('2. Page status code =', page.status_code)
+	
+	if page.status_code == 429:
+		# sleep 15 seconds
+		time.sleep(15)
+		#repeat API call
+		page = requests.get(apiUrl)
+		c = page.content
+		print('2 (retry). Page status code =', page.status_code)
 	# print(c) # debugging
 	
 	# that was a missing name
@@ -106,14 +122,17 @@ for i in range(start, end): # note: The index starts in 1 and ends in 37115 (as 
 	
 	# Decoding JSON
 	try:
-		print('Fetching JSON...', i)
+		print('3. Fetching JSON...', i)
 	except:
 		print("Unexpected error:", sys.exc_info()[0])
 		continue
 
 	# if status code is 200 then write to file
+	# NOTE - to do something with other codes
+	# e.g if status code != 404 sleep(5) then retry
+	
 	if(page.status_code == 200):
-		count = count + 1 # Increament anime count
+		count = count + 1 # Increment anime count
 
 		print('\nWriting to file...') # Message
 
@@ -124,9 +143,10 @@ for i in range(start, end): # note: The index starts in 1 and ends in 37115 (as 
 		print('Reading', name, 'animelist...') # printing title to screen
 
 		studio = [] # list to store studio (list cause it can be more then 1)
-		genre = [] # list to store genre (list cuase it can be more then 1)
-		producers = []
-		licensors = []
+		genre = [] # list to store genre (list cause it can be more then 1)
+		
+		producers = [] # idem
+		licensors = [] # idem
 
 		# aired_string = [] # list to store aired properties (can be more than 1)
 
@@ -179,13 +199,7 @@ for i in range(start, end): # note: The index starts in 1 and ends in 37115 (as 
 		l.append(jsonData['background']) # long string with production background and other things
 		l.append(jsonData['premiered']) # anime premiered on
 		l.append(jsonData['broadcast']) # when is (regularly) broadcasted
-		l.append(jsonData['related']) # dictionaruy: related animes, series, games etc.
-		
-		
-
-		
-		
-		
+		l.append(jsonData['related']) # dictionary: related animes, series, games etc.
 		
 		
 		# preparing to write csv
@@ -193,7 +207,7 @@ for i in range(start, end): # note: The index starts in 1 and ends in 37115 (as 
 
 		print('Writing anime', name)
 		print('Total Anime stored in  the session:', count)
-		print('Index of anime to be written:', i)
+		print('Index of anime to be written:', i, '\n')
 
 		writer.writerows(l) # writing one row in the CSV
 
