@@ -112,7 +112,7 @@ for i in range(start, end): # note: The index starts in 1 and ends in 37115 (as 
 	# to try & error to see if sleep can be put below, only when "too many requests" error occurs.
 	# processing 429 errors
 	if page.status_code == 429:
-		print('    2. (wait + retry) Page status code =', page.status_code)
+		print('    2\'. (wait + retry) ')
 		# Initializing error list
 		err_l = []
 		# sleep 15 seconds
@@ -121,10 +121,11 @@ for i in range(start, end): # note: The index starts in 1 and ends in 37115 (as 
 		page = requests.get(apiUrl)
 		c = page.content
 		if page.status_code != 200:
+			print('    2\'.After retrying page status code =', page.status_code)
 			err_l.append(i)
 			err_l.append(page.status_code)
 			err_l = [err_l] # helps with csv writerows
-			writer.writerows(err_l) # write one line in errors csv
+			error_writer.writerows(err_l) # write one line in errors csv
 		
 	# print(c) # debugging
 	
