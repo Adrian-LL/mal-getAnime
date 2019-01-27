@@ -73,7 +73,7 @@ except:
 # setting name of output file
 if(len(sys.argv) == 4):
 	outputFile = str(sys.argv[3])
-	errorFile = str(sys.argv[3] + '_errors.csv'
+	errorFile = str(sys.argv[3] + '_errors.csv')
 else:
 	outputFile = 'Anime.csv'
 	errorFile = 'Anime.csv_errors.csv'
