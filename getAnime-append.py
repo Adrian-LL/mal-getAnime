@@ -231,3 +231,4 @@ w.close() # closing main csv file
 e.close() # close also errors file
 
 print('No more anime left. Done.\nOutput file:', outputFile)
+print('Error file', errorFile)
