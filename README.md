@@ -1,7 +1,11 @@
 # mal-getAnime
 Pyhton script for getting anime from MyAnimeList.
 
-Forked from Dibakarroy1997/myanimelist-data-set-creator
+Based on **jikan** unofficial API (https://jikan.docs.apiary.io/) 
+
+Forked from Dibakarroy1997/myanimelist-data-set-creator (https://github.com/Dibakarroy1997/myanimelist-data-set-creator).
+
+>Please note that because a site is crawled with an unofficial API, not all the pages are fetched. Sometimes there are errors which are not catched by the script.
 
 ## Two files
 1. `getAnime.py` - for getting the first x rows. Creates the output file and writes the headers. The file is opened in `'w'` (write) mode. 
