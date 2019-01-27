@@ -101,16 +101,17 @@ for i in range(start, end): # note: The index starts in 1 and ends in 37115 (as 
 	page = requests.get(apiUrl)
 	c = page.content
 	
-	print('1. Index =', i)
+	print('\n1. Index =', i)
 	print('2. Page status code =', page.status_code)
 	
 	if page.status_code == 429:
+		print('    2. (wait + retry) Page status code =', page.status_code)
 		# sleep 15 seconds
 		time.sleep(15)
 		#repeat API call
 		page = requests.get(apiUrl)
 		c = page.content
-		print('2 (retry). Page status code =', page.status_code)
+		
 	# print(c) # debugging
 	
 	# that was a missing name
