@@ -73,13 +73,16 @@ except:
 # setting name of output file
 if(len(sys.argv) == 4):
 	outputFile = str(sys.argv[3])
+	errorFile = str(sys.argv[3] + '_errors.csv'
 else:
 	outputFile = 'Anime.csv'
+	errorFile = 'Anime.csv_errors.csv'
 
 # opening output file for *appending*
 # don't forget the encoding for japanese and or other unicode caracters
 # please note the newline = '' - it is needed only for Windows (otherwise writer insert blank rows)
 w = open(outputFile, 'a', encoding='utf-8', newline = '')
+e = open(errorFile, 'a', encoding='utf-8', newline = '')
 
 # header
 # commeted because this is the append file
@@ -87,6 +90,7 @@ w = open(outputFile, 'a', encoding='utf-8', newline = '')
 
 # creating csv writer object
 writer = csv.writer(w)
+error_writer = csv.writer(e)
 
 for i in range(start, end): # note: The index starts in 1 and ends in 37115 (as on Jan 15 2018)
 	# apiUrl = 'http://api.jikan.moe/anime/' + str(i) # base url for API
@@ -94,8 +98,9 @@ for i in range(start, end): # note: The index starts in 1 and ends in 37115 (as 
 	# note: for SSL use 'https://api.jikan.me/'. For more go here 'https://jikan.me/docs'
 
 	# wait 5 seconds for avoiding API throttling problems
-	# to try & error to see if sleep can be put below, only when "too many requests" error occurs
-	time.sleep(5)
+	# let's try with 4 seconds
+	
+	time.sleep(4)
 	
 	# First API call
 	page = requests.get(apiUrl)
@@ -104,13 +109,22 @@ for i in range(start, end): # note: The index starts in 1 and ends in 37115 (as 
 	print('\n1. Index =', i)
 	print('2. Page status code =', page.status_code)
 	
+	# to try & error to see if sleep can be put below, only when "too many requests" error occurs.
+	# processing 429 errors
 	if page.status_code == 429:
 		print('    2. (wait + retry) Page status code =', page.status_code)
+		# Initializing error list
+		err_l = []
 		# sleep 15 seconds
 		time.sleep(15)
 		#repeat API call
 		page = requests.get(apiUrl)
 		c = page.content
+		if page.status_code != 200:
+			err_l.append(i)
+			err_l.append(page.status_code)
+			err_l = [err_l] # helps with csv writerows
+			writer.writerows(err_l) # write one line in errors csv
 		
 	# print(c) # debugging
 	
@@ -212,6 +226,7 @@ for i in range(start, end): # note: The index starts in 1 and ends in 37115 (as 
 
 		writer.writerows(l) # writing one row in the CSV
 
-w.close() # closing file
+w.close() # closing main csv file
+e.close() # close also errors file
 
 print('No more anime left. Done.\nOutput file:', outputFile)
