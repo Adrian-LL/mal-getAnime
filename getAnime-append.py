@@ -121,7 +121,7 @@ for i in range(start, end): # note: The index starts in 1 and ends in 37115 (as 
 		page = requests.get(apiUrl)
 		c = page.content
 		if page.status_code != 200:
-			print('    2\'.After retrying page status code =', page.status_code)
+			print('    2\'. After retrying page status code =', page.status_code)
 			err_l.append(i)
 			err_l.append(page.status_code)
 			err_l = [err_l] # helps with csv writerows
