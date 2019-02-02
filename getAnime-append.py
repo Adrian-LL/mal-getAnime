@@ -87,7 +87,7 @@ e = open(errorFile, 'a', encoding='utf-8', newline = '')
 
 # header
 # commented because this is the append file
-w.write('animeID, name, title_english, title_japanese, title_synonyms, type, source, producers, genres, studios, episodes, status, airing, aired, duration, rating, score, scored_by, ranked, popularity, members, favorites, synopsis, background, premiered, broadcast, related\n')
+# w.write('animeID, name, title_english, title_japanese, title_synonyms, type, source, producers, genres, studios, episodes, status, airing, aired, duration, rating, score, scored_by, ranked, popularity, members, favorites, synopsis, background, premiered, broadcast, related\n')
 
 # creating csv writer objects
 writer = csv.writer(w)

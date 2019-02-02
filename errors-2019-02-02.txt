@@ -1,0 +1,41 @@
+1. Index = 27111
+2. Page status code = 404
+
+1. Index = 27112
+Let's see if we get there
+    2'. (wait + retry)
+    2'. After retrying page status code = 429
+3. Fetching JSON... 27112
+Let's see if we get there
+    2'. (wait + retry)
+    2'. After retrying page status code = 404
+3. Fetching JSON... 27112
+
+1. Index = 27113
+2. Page status code = 404
+
+
+Let's see if we get there                                                                                          
+3. Fetching JSON... 27363                                                                                          
+                                                                                                                   
+Writing to file...                                                                                                 
+Reading Yakata: Kannou Kitan animelist...                                                                          
+Writing anime Yakata: Kannou Kitan                                                                                 
+Total Anime stored in  the session: 119657                                                                         
+Index of anime to be written: 27363                                                                                
+                                                                                                                   
+Let's see if we get there                                                                                          
+3. Fetching JSON... 27363                                                                                          
+                                                                                                                   
+Writing to file...                                                                                                 
+Reading Yakata: Kannou Kitan animelist...                                                                          
+Writing anime Yakata: Kannou Kitan                                                                                 
+Total Anime stored in  the session: 119658                                                                         
+Index of anime to be written: 27363                                                                                
+                                                                                                                   
+Let's see if we get there                                                                                          
+Traceback (most recent call last):                                                                                 
+  File "C:\Users\Adrian\OneDrive\Personal\GitHub\mal-getAnime\getAnime-append-03.py", line 118, in <module>        
+    print('Let\'s see if we get there')                                                                            
+KeyboardInterrupt                                                                                                  
+                                                                                                                   
