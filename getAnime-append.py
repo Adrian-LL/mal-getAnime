@@ -115,7 +115,7 @@ for i in range(start, end): # note: The index starts in 1 and ends in 37115 (as 
 	while page.status_code != 404:
 	
 		# Debugging
-		print('Let\'s see if we get there')
+		# print('Let\'s see if we get there')
 		
 		# processing 429 (too many requests) errors
 		if page.status_code == 429:
