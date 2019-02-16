@@ -1,6 +1,8 @@
 # mal-getAnime
 Pyhton script for getting anime from MyAnimeList.
 
+Inspired by this: https://www.kaggle.com/azathoth42/datasets and this  https://github.com/racinmat/mal-analysis/
+
 Based on **jikan** unofficial API (https://jikan.docs.apiary.io/) 
 
 Forked from Dibakarroy1997/myanimelist-data-set-creator (https://github.com/Dibakarroy1997/myanimelist-data-set-creator).
